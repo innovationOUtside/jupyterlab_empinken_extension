@@ -1,0 +1,8 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "jupyterlab_empinken_extension",
+  "description": "jupyterlab_empinken_extension settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
