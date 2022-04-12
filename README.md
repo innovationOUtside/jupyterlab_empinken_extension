@@ -19,3 +19,17 @@ Extension settings can be accessed from the Settings menu (Advanced Settings) an
 ![image](https://user-images.githubusercontent.com/82988/163000240-66b291b9-d2b4-4565-9b01-c9785d6df3a8.png)
 
 The extension also allows the display of each of the toolbar buttons to be individually controlled, as well as whether cells with parsed tags have HTML DOM classes added or not.  
+
+
+## Related Blog Posts
+
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 1: Rendered Markdown Cells](https://blog.ouseful.info/2022/04/06/trying-to-make-sense-of-the-jupyterlab-notebook-html-dom-model-part-1-rendered-markdown-cells/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 2: Code Cells](https://blog.ouseful.info/2022/04/07/trying-to-make-sense-of-the-jupyterlab-notebook-html-dom-model-part-2-code-cells/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 3: Setting Classes Based on Cell Tags From a JupyterLab Extension](https://blog.ouseful.info/2022/04/07/notes-on-the-jupyterlab-notebook-html-dom-model-part-3-setting-classes-based-on-cell-tags-from-jupyterlab-extensions/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 4: Styling Custom Classes](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-4-styling-custom-classes/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 5: Setting DOM Classes and Cell Tags From Notebook Toolbar Buttons](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-5-setting-dom-classes-and-cell-tags-from-notebook-toolbar-buttons/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 6: Pulling an Extension Together](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-6-pulling-an-extension-together/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 7: Extension User Settings](https://blog.ouseful.info/2022/04/11/notes-on-the-jupyterlab-notebook-html-dom-model-part-7-extension-user-settings/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 8: Setting CSS Variable Values from an Extension](https://blog.ouseful.info/2022/04/11/notes-on-the-jupyterlab-notebook-html-dom-model-part-8-setting-css-variable-values-from-an-extension/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 8.5: A Reproducible Development Process](https://blog.ouseful.info/2022/04/12/notes-on-the-jupyterlab-notebook-html-dom-model-part-8-5-a-reproducible-development-process/)
+- [Notes on the JupyterLab Notebook HTML DOM Model, Part 9: Building and Distributing a Pre-Built Extension](https://blog.ouseful.info/2022/04/12/notes-on-the-jupyterlab-notebook-html-dom-model-part-9-building-and-distributing-a-pre-built-extension/)
