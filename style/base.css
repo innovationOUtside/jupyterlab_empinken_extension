@@ -3,3 +3,27 @@
 
     https://jupyterlab.readthedocs.io/en/stable/developer/css.html
 */
+
+:root {
+    --iou-activity-bg-color: lightblue;
+    --iou-solution-bg-color: lightgreen;
+    --iou-learner-bg-color: yellow;
+    --iou-tutor-bg-color: lightpink;
+  }
+
+.iou-activity-node {
+    background-color: var(--iou-activity-bg-color) !important;
+}
+
+.iou-solution-node {
+    background-color: var(--iou-solution-bg-color) !important;
+}
+
+.iou-learner-node {
+    background-color: var(--iou-learner-bg-color) !important;
+}
+
+.iou-tutor-node {
+    background-color: var(--iou-tutor-bg-color) !important;
+}
+
