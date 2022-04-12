@@ -1,7 +1,14 @@
 # jupyterlab-empinken-extension
 Coloured JupyterLab / RetroLab notebook cells based on cell tags
 
-This extension optionally enables frour notebook toolbar buttons that can toggle persistent tag state on notebook markdown and code cells.
+This extension optionally enables four notebook toolbar buttons that can toggle persistent tag state on notebook markdown and code cells.
+
+To install the extension:
+
+`pip3 install --upgrade https://raw.githubusercontent.com/innovationOUtside/jupyterlab_empinken_extension/main/jupyterlab_empinken_extension-0.1.1-py3-none-any.whl`
+
+*You may need to restrat the JupyterLab server? [NOT TESTED]*
+
 
 The extension detects appropriate tags and adds corresponding classes to the notebook cell HTML DOM, which allows the backgrounds of the styles to be styled:
 
