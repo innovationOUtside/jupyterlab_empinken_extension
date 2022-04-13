@@ -7,7 +7,7 @@ This extension optionally enables four notebook toolbar buttons that can toggle 
 
 To install the extension:
 
-`pip3 install --upgrade https://raw.githubusercontent.com/innovationOUtside/jupyterlab_empinken_extension/main/jupyterlab_empinken_extension-0.1.1-py3-none-any.whl`
+`pip3 install --upgrade https://raw.githubusercontent.com/innovationOUtside/jupyterlab_empinken_extension/main/dist/jupyterlab_empinken_extension-0.1.1-py3-none-any.whl`
 
 *You may need to restrat the JupyterLab server? [NOT TESTED]*
 
