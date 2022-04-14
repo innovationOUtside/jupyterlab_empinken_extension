@@ -1,0 +1,111 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "jupyterlab_empinken_extension",
+  "description": "jupyterlab_empinken_extension settings.",
+  "type": "object",
+  "properties": {
+    "tagprefix": {
+      "type": "string",
+      "title": "Tag prefix",
+      "description": "Prefix to identify tag2class tags",
+      "default": "style-"
+    },
+    "activity_button": {
+      "type": "boolean",
+      "title": "Activity button",
+      "description": "Whether to display the \"Activity [A]\" button",
+      "default": true
+    },
+    "solution_button": {
+      "type": "boolean",
+      "title": "Solution button",
+      "description": "Whether to display the \"Solution [S]\" button",
+      "default": true
+    },
+    "learner_button": {
+      "type": "boolean",
+      "title": "Learner button",
+      "description": "Whether to display the \"Learner [L]\" button",
+      "default": true
+    },
+    "tutor_button": {
+      "type": "boolean",
+      "title": "Tutor button",
+      "description": "Whether to display the \"Tutor [T]\" button",
+      "default": true
+    },
+    "activity_render": {
+      "type": "boolean",
+      "title": "Activity render",
+      "description": "Whether to render the \"Activity [A]\" background",
+      "default": true
+    },
+    "solution_render": {
+      "type": "boolean",
+      "title": "Solution render",
+      "description": "Whether to render the \"Solution [S]\" background",
+      "default": true
+    },
+    "learner_render": {
+      "type": "boolean",
+      "title": "Learner render",
+      "description": "Whether to render the \"Learner [L]\" background",
+      "default": true
+    },
+    "tutor_render": {
+      "type": "boolean",
+      "title": "Tutor render",
+      "description": "Whether to render the \"Tutor [T]\" background",
+      "default": true
+    },
+    "activity_color": {
+      "type": "string",
+      "title": "Activity color",
+      "description": "The base color for the activity cell background",
+      "default": "lightblue"
+    },
+    "solution_color": {
+      "type": "string",
+      "title": "Solution color",
+      "description": "The base color for the solution cell background",
+      "default": "lightgreen"
+    },
+    "learner_color": {
+      "type": "string",
+      "title": "Learner color",
+      "description": "The base color for the learner cell background",
+      "default": "yellow"
+    },
+    "tutor_color": {
+      "type": "string",
+      "title": "Tutor color",
+      "description": "The base color for the tutor cell background",
+      "default": "lightpink"
+    },
+    "activity_tag": {
+      "type": "string",
+      "title": "Activity tag name",
+      "description": "Tag body (ex- of prefix) to identify activity",
+      "default": "activity"
+    },
+    "solution_tag": {
+      "type": "string",
+      "title": "Solution tag name",
+      "description": "Tag body (ex- of prefix) to identify solution",
+      "default": "solution"
+    },
+    "learner_tag": {
+      "type": "string",
+      "title": "Learner tag name",
+      "description": "Tag body (ex- of prefix) to identify learner",
+      "default": "student"
+    },
+    "tutor_tag": {
+      "type": "string",
+      "title": "Tutor tag name",
+      "description": "Tag body (ex- of prefix) to identify tutor",
+      "default": "commentate"
+    }
+  },
+  "additionalProperties": false
+}
