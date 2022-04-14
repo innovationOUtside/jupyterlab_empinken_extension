@@ -26,7 +26,8 @@ jobs:
     - name: Build a binary wheel and a source tarball
       run: |
         python3 -m pip install --user --upgrade setuptools wheel
-        python3 setup.py sdist bdist_wheel
+        python3 -m pip install build
+        python3 -m build
     - name: Publish distribution to PyPI
       # if: startsWith(github.event.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@master
