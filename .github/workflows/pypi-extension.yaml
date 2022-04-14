@@ -4,13 +4,7 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'     
-        required: true
-        default: 'warning'
-      tags:
-        description: 'Push to pypi' 
+
 jobs:
   build-n-publish:
     name: Build and publish Python distribution to PyPI
