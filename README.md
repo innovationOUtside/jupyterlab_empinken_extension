@@ -1,6 +1,8 @@
 # jupyterlab-empinken-extension
 Coloured JupyterLab / RetroLab notebook cells based on cell tags
 
+Jupyterlite demo: https://innovationoutside.github.io/jupyterlab_empinken_extension/
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/innovationOUtside/jupyterlab_empinken_extension/HEAD)
 
 This extension optionally enables four notebook toolbar buttons that can toggle persistent tag state on notebook markdown and code cells.
