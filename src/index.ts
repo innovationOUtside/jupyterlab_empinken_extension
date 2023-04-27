@@ -136,15 +136,26 @@ export class ButtonExtension
         // What tags are defined on the cell to start with
         console.log("Cell tags at start are: " + tagList);
 
+        /*
+        // What's the markdown content?
+        if (activeCell.model.type=="markdown") {
+          // This gives us the raw markdown,
+          // but we can't get the rendered markdown...
+          console.log("md- "+activeCell.model.value.text)
+          console.log("test-string- "+JSON.stringify(activeCell.model.toJSON()))
+          // Nor is it obvious how to modify the raw markdown then render it.
+        }
+        */
+
         // To simply add a tag to a cell on a button click,
         // we can .push() (i.e. append) the tag to the tag list
         // optionally checking first that it's not already there...
         //if !(tagList.includes("TESTTAG"))
         //    tagList.push("TESTTAG")
-         
+
         /*
         We can also toggle tags...
-         
+
         Note that this works at the data level but is not reflected
         with live updates in the cell property inspector if it is displayed.
          
