@@ -9,6 +9,10 @@ This extension optionally enables four notebook toolbar buttons that can toggle 
 
 To install the prebuilt extension from a wheel:
 
+`pip3 install --upgrade jupyterlab-empinken-extension`
+
+To install the wheel from this repo:
+
 `pip3 install --upgrade https://raw.githubusercontent.com/innovationOUtside/jupyterlab_empinken_extension/main/dist/jupyterlab_empinken_extension-0.1.1-py3-none-any.whl`
 
 *You may need to restart the JupyterLab server? [NOT TESTED]*
