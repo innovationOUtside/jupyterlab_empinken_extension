@@ -42,7 +42,7 @@ jobs:
           set -eux
           #jlpm
           #python -m pip install .
-          python -m pip jupyterlab_empinken_extension
+          python -m pip install jupyterlab_empinken_extension
 
       - uses: jupyterlab/maintainer-tools/.github/actions/update-snapshots@v1
         with:
