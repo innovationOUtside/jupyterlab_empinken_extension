@@ -16,7 +16,7 @@ in [jupyter_server_test_config.py](./jupyter_server_test_config.py).
 
 The default configuration will produce video for failing tests and an HTML report.
 
-Playwrite test scripts can be genratd from intractive recordings:
+Playwrite test scripts can be generated from interactive recordings:
 
 ```sh
 cd ./ui-tests
