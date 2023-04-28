@@ -30,16 +30,18 @@ test.describe('Empinken Tests', () => {
     expect(await page.screenshot({fullPage: true})).toMatchSnapshot(imageName, {maxDiffPixelRatio:0.01});
     //await page.notebook.runCellByCell();
 
-    // But we still can't get the fullly scrolled notebook
+    // But we still can't get the fully scrolled notebook
     const nbPanel = await page.notebook.getNotebookInPanel(empinkenFileName);
     expect( await nbPanel.screenshot()).toMatchSnapshot('panel_nb.png');
 
-    const toolbarIndexes = [13, 14, 15, 16];
-    const toolbarNames = [empinkenFileName, empinkenFileName];
+    //const toolbarIndexes = [13, 14, 15, 16];
+    //If we're the first of the installed extensions:
+    const toolbarIndexes = [11, 12, 13, 14];
     const toolbarItemNames = ['Activity', 'Solution', 'Learner', 'Tutor'];
-    
+
     for (let i = 0; i < toolbarIndexes.length; i++) {
-      const toolbarItem = await page.notebook.getToolbarItemByIndex(toolbarIndexes[i], toolbarNames[i]);
+
+      const toolbarItem = await page.notebook.getToolbarItemByIndex(toolbarIndexes[i], empinkenFileName);
       await toolbarItem.click();
       expect(await nbPanel.screenshot()).toMatchSnapshot(`panel_nb_${toolbarItemNames[i]}1.png`);
       await toolbarItem.click();
