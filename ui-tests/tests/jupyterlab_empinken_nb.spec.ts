@@ -36,7 +36,7 @@ test.describe('Empinken Tests', () => {
 
     //const toolbarIndexes = [13, 14, 15, 16];
     //If we're the first of the installed extensions:
-    const toolbarIndexes = [11, 12, 13, 14];
+    const toolbarIndexes = [10, 11, 12, 13];
     const toolbarItemNames = ['Activity', 'Solution', 'Learner', 'Tutor'];
 
     for (let i = 0; i < toolbarIndexes.length; i++) {
