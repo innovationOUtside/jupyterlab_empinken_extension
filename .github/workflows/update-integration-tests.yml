@@ -2,8 +2,9 @@
 name: Update Playwright Snapshots
 
 on:
-  issue_comment:
-    types: [created, edited]
+  workflow_dispatch:
+  #issue_comment:
+  #  types: [created, edited]
 
 permissions:
   contents: write
@@ -13,7 +14,7 @@ jobs:
   
   
   update-snapshots:
-    if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, 'please update playwright snapshots') }}
+    #if: ${{ github.event.issue.pull_request && contains(github.event.comment.body, 'please update playwright snapshots') }}
     runs-on: ubuntu-latest
 
     steps:
