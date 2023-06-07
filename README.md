@@ -29,6 +29,19 @@ Extension settings can be accessed from the Settings menu (Advanced Settings) an
 
 The extension also allows the display of each of the toolbar buttons to be individually controlled, as well as whether cells with parsed tags have HTML DOM classes added or not.  
 
+## Building and Pushing Newly Built Wheels to PyPi
+
+```bash
+# Build
+pip install build
+# Node MUST BE INSTALLED
+python -m build
+# packages built into ./dist
+
+# Push to PyPi
+pip install twine
+twine upload MY_PACKAGE.whl
+```
 
 ## Related Blog Posts
 
