@@ -33,7 +33,11 @@ The extension also allows the display of each of the toolbar buttons to be indiv
 
 ```bash
 # Build
-pip install build
+pip install build jupyter-packaging
+
+# Install the package
+pip install .
+
 # Node MUST BE INSTALLED
 python -m build
 # packages built into ./dist
