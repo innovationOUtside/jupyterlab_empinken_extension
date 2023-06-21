@@ -4,6 +4,7 @@
     https://jupyterlab.readthedocs.io/en/stable/developer/css.html
 */
 
+
 :root {
     --iou-activity-bg-color: lightblue;
     --iou-solution-bg-color: lightgreen;
@@ -26,4 +27,3 @@
 .iou-tutor-node {
     background-color: var(--iou-tutor-bg-color) !important;
 }
-

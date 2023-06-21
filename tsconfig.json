@@ -9,16 +9,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": true,
-    "noImplicitAny": false,
-    "noUnusedLocals": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
     "outDir": "lib",
     "rootDir": "src",
-    "strict": true,
+    "strict": false,
     "strictNullChecks": false,
-    "target": "es2018",
-    "types": []
+    "target": "ES2018",
+    "types": ["jest"]
   },
   "include": ["src/*"]
 }
