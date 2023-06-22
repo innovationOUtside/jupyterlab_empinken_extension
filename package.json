@@ -1,20 +1,20 @@
 {
-  "name": "@jupyterlab-examples/toolbar-button",
-  "version": "0.1.0",
-  "description": "A JupyterLab extension adding a button to the Notebook toolbar.",
+  "name": "jupyterlab_empinken_extension",
+  "version": "0.4.0",
+  "description": "A JupyterLab extension to colour notebook cell backgrounds.",
   "keywords": [
     "jupyter",
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/jupyterlab/extension-examples",
+  "homepage": "https://github.com/innovationOUtside/jupyterlab_empinken_extension",
   "bugs": {
-    "url": "https://github.com/jupyterlab/extension-examples/issues"
+    "url": "https://github.com/innovationOUtside/jupyterlab_empinken_extension/issues"
   },
   "license": "BSD-3-Clause",
   "author": {
-    "name": "Project Jupyter Contributors",
-    "email": ""
+    "name": "Tony Hirst",
+    "email": "tony.hirst@gmail.com"
   },
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
@@ -26,7 +26,7 @@
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jupyterlab/extension-examples.git"
+    "url": "https://github.com/innovationOUtside/jupyterlab_empinken_extension.git"
   },
   "workspaces": [
     "ui-tests"
@@ -41,7 +41,7 @@
     "clean": "jlpm clean:lib",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
-    "clean:labextension": "rimraf jupyterlab_examples_toolbar_button/labextension jupyterlab_examples_toolbar_button/_version.py",
+    "clean:labextension": "rimraf jupyterlab_empinken_extension/labextension jupyterlab_empinken_extension/_version.py",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
     "eslint": "jlpm eslint:check --fix",
     "eslint:check": "eslint . --cache --ext .ts,.tsx",
@@ -95,7 +95,7 @@
   },
   "jupyterlab": {
     "extension": true,
-    "outputDir": "jupyterlab_examples_toolbar_button/labextension",
+    "outputDir": "jupyterlab_empinken_extension/labextension",
     "schemaDir": "schema"
   },
   "eslintIgnore": [

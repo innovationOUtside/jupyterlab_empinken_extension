@@ -23,8 +23,8 @@
       }
     ]
   },
-  "title": "@jupyterlab-examples/toolbar-button",
-  "description": "@jupyterlab-examples/toolbar-button settings.",
+  "title": "jupyterlab_empinken_extension",
+  "description": "jupyterlab_empinken_extension settings.",
   "type": "object",
   "properties": {},
   "additionalProperties": false

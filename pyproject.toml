@@ -3,7 +3,7 @@ requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5", "hatch-nodejs-version"]
 build-backend = "hatchling.build"
 
 [project]
-name = "jupyterlab_examples_toolbar_button"
+name = "jupyterlab_empinken_extension"
 readme = "README.md"
 license = {text = "BSD-3-Clause License"}
 requires-python = ">=3.8"
@@ -32,24 +32,24 @@ source = "nodejs"
 fields = ["description", "authors", "urls"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterlab_examples_toolbar_button/labextension"]
+artifacts = ["jupyterlab_empinken_extension/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab_examples_toolbar_button/labextension" = "share/jupyter/labextensions/@jupyterlab-examples/toolbar-button"
-"install.json" = "share/jupyter/labextensions/@jupyterlab-examples/toolbar-button/install.json"
+"jupyterlab_empinken_extension/labextension" = "share/jupyter/labextensions/jupyterlab_empinken_extension"
+"install.json" = "share/jupyter/labextensions/jupyterlab_empinken_extension/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterlab_examples_toolbar_button/_version.py"
+path = "jupyterlab_empinken_extension/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterlab_examples_toolbar_button/labextension/static/style.js",
-    "jupyterlab_examples_toolbar_button/labextension/package.json",
+    "jupyterlab_empinken_extension/labextension/static/style.js",
+    "jupyterlab_empinken_extension/labextension/package.json",
 ]
-skip-if-exists = ["jupyterlab_examples_toolbar_button/labextension/static/style.js"]
+skip-if-exists = ["jupyterlab_empinken_extension/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -59,7 +59,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterlab_examples_toolbar_button/labextension"
+build_dir = "jupyterlab_empinken_extension/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"
