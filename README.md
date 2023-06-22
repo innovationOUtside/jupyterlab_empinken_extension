@@ -1,6 +1,13 @@
 # jupyterlab-empinken-extension
 Coloured JupyterLab / RetroLab notebook cells based on cell tags
 
+
+JUPYTERLAB 4 version:
+- `pip install https://github.com/innovationOUtside/jupyterlab_empinken_extension/raw/jlv4/dist/jupyterlab_empinken_extension-0.4.0-py3-none-any.whl`
+
+
+BELOW RELATES TO JUPYTERLAB V3
+
 Jupyterlite demo: https://innovationoutside.github.io/jupyterlab_empinken_extension/
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/innovationOUtside/jupyterlab_empinken_extension/HEAD?labpath=content%2Fdemo.ipynb)
