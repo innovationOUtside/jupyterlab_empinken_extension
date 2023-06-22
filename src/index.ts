@@ -152,22 +152,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
       };
     };
     
-    // empinken_tags.forEach((tag:string) => {
-    //   commands.addCommand('ouseful-empinken:'+tag,
-    //     createEmpinkenCommand(tag.charAt(0).toUpperCase(),
-    //     tag));
-    // })
-    const command_a = 'ouseful-empinken:activity';
-    const command_l = 'ouseful-empinken:learner';
-    const command_s = 'ouseful-empinken:solution';
-    const command_t = 'ouseful-empinken:tutor';
+    empinken_tags.forEach((tag:string) => {
+      commands.addCommand('ouseful-empinken:'+tag,
+        createEmpinkenCommand(tag.charAt(0).toUpperCase(),
+        tag));
+    })
+    // const command_a = 'ouseful-empinken:activity';
+    // const command_l = 'ouseful-empinken:learner';
+    // const command_s = 'ouseful-empinken:solution';
+    // const command_t = 'ouseful-empinken:tutor';
 
-    // Add commands
-    commands.addCommand(command_a, createEmpinkenCommand('A', 'activity'));
-    commands.addCommand(command_l, createEmpinkenCommand('L', 'learner'));
-    commands.addCommand(command_s, createEmpinkenCommand('S', 'solution'));
-    commands.addCommand(command_t, createEmpinkenCommand('T', 'tutor'));
-    console.log("commands added")
+    // // Add commands
+    // commands.addCommand(command_a, createEmpinkenCommand('A', 'activity'));
+    // commands.addCommand(command_l, createEmpinkenCommand('L', 'learner'));
+    // commands.addCommand(command_s, createEmpinkenCommand('S', 'solution'));
+    // commands.addCommand(command_t, createEmpinkenCommand('T', 'tutor'));
+    // console.log("commands added")
     // Call the command execution
     //commands.execute(command_a, { origin: 'init' }).catch(reason => {
     //  console.error(
