@@ -1,69 +1,76 @@
-# jupyterlab-empinken-extension
-Coloured JupyterLab / RetroLab notebook cells based on cell tags
+# jupyterlab_empinken_extension
 
+[![Github Actions Status](https://github.com/innovationOUtside/jupyterlab_empinken_extension/workflows/Build/badge.svg)](https://github.com/innovationOUtside/jupyterlab_empinken_extension/actions/workflows/build.yml)
+A JupyterLab extension.
 
-JUPYTERLAB 4 version:
-- `pip install https://github.com/innovationOUtside/jupyterlab_empinken_extension/raw/jlv4/dist/jupyterlab_empinken_extension-0.4.0-py3-none-any.whl`
+## Requirements
 
+- JupyterLab >= 4.0.0
 
-BELOW RELATES TO JUPYTERLAB V3
+## Install
 
-Jupyterlite demo: https://innovationoutside.github.io/jupyterlab_empinken_extension/
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/innovationOUtside/jupyterlab_empinken_extension/HEAD?labpath=content%2Fdemo.ipynb)
-
-This extension optionally enables four notebook toolbar buttons that can toggle persistent tag state on notebook markdown and code cells.
-
-To install the prebuilt extension from a wheel:
-
-`pip3 install --upgrade jupyterlab-empinken-extension`
-
-To install the wheel from this repo:
-
-`pip3 install --upgrade https://raw.githubusercontent.com/innovationOUtside/jupyterlab_empinken_extension/main/dist/jupyterlab_empinken_extension-0.1.1-py3-none-any.whl`
-
-*You may need to restart the JupyterLab server? [NOT TESTED]*
-
-*I have no idea how to construct the repo so that you could `pip install git+REPO` and it wouldn't go through the build process. TBH, I'm surprised I made it this far...*
-
-The extension detects appropriate tags and adds corresponding classes to the notebook cell HTML DOM, which allows the backgrounds of the styles to be styled:
-
-![image](https://user-images.githubusercontent.com/82988/162999814-f3b78849-5c5b-4399-940c-3a73048b40f6.png)
-
-Extension settings can be accessed from the Settings menu (Advanced Settings) and used to define the parsed tag patterns and the corresponding background colours.
-
-![image](https://user-images.githubusercontent.com/82988/163000240-66b291b9-d2b4-4565-9b01-c9785d6df3a8.png)
-
-The extension also allows the display of each of the toolbar buttons to be individually controlled, as well as whether cells with parsed tags have HTML DOM classes added or not.  
-
-## Building and Pushing Newly Built Wheels to PyPi
+To install the extension, execute:
 
 ```bash
-# Build
-pip install build jupyter-packaging
-
-# Install the package
-pip install .
-
-# Node MUST BE INSTALLED
-python -m build
-# packages built into ./dist
-
-# Push to PyPi
-pip install twine
-twine upload MY_PACKAGE.whl
+pip install jupyterlab_empinken_extension
 ```
 
-## Related Blog Posts
+## Uninstall
 
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 1: Rendered Markdown Cells](https://blog.ouseful.info/2022/04/06/trying-to-make-sense-of-the-jupyterlab-notebook-html-dom-model-part-1-rendered-markdown-cells/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 2: Code Cells](https://blog.ouseful.info/2022/04/07/trying-to-make-sense-of-the-jupyterlab-notebook-html-dom-model-part-2-code-cells/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 3: Setting Classes Based on Cell Tags From a JupyterLab Extension](https://blog.ouseful.info/2022/04/07/notes-on-the-jupyterlab-notebook-html-dom-model-part-3-setting-classes-based-on-cell-tags-from-jupyterlab-extensions/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 4: Styling Custom Classes](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-4-styling-custom-classes/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 5: Setting DOM Classes and Cell Tags From Notebook Toolbar Buttons](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-5-setting-dom-classes-and-cell-tags-from-notebook-toolbar-buttons/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 6: Pulling an Extension Together](https://blog.ouseful.info/2022/04/08/notes-on-the-jupyterlab-notebook-html-dom-model-part-6-pulling-an-extension-together/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 7: Extension User Settings](https://blog.ouseful.info/2022/04/11/notes-on-the-jupyterlab-notebook-html-dom-model-part-7-extension-user-settings/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 8: Setting CSS Variable Values from an Extension](https://blog.ouseful.info/2022/04/11/notes-on-the-jupyterlab-notebook-html-dom-model-part-8-setting-css-variable-values-from-an-extension/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 8.5: A Reproducible Development Process](https://blog.ouseful.info/2022/04/12/notes-on-the-jupyterlab-notebook-html-dom-model-part-8-5-a-reproducible-development-process/)
-- [Notes on the JupyterLab Notebook HTML DOM Model, Part 9: Building and Distributing a Pre-Built Extension](https://blog.ouseful.info/2022/04/12/notes-on-the-jupyterlab-notebook-html-dom-model-part-9-building-and-distributing-a-pre-built-extension/)
-- [Demoing JupyterLab Extensions from an Extension Repo Using Github Pages and JupyterLite](https://blog.ouseful.info/2022/04/14/demoing-jupyterlab-extensions-from-an-extension-repo-using-github-pages-and-jupyerlite/)
+To remove the extension, execute:
+
+```bash
+pip uninstall jupyterlab_empinken_extension
+```
+
+## Contributing
+
+### Development install
+
+Note: You will need NodeJS to build the extension package.
+
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
+
+```bash
+# Clone the repo to your local environment
+# Change directory to the jupyterlab_empinken_extension directory
+# Install package in development mode
+pip install -e "."
+# Link your development version of the extension with JupyterLab
+jupyter labextension develop . --overwrite
+# Rebuild extension Typescript source after making changes
+jlpm build
+```
+
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
+
+```bash
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
+
+By default, the `jlpm build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
+```
+
+### Development uninstall
+
+```bash
+pip uninstall jupyterlab_empinken_extension
+```
+
+In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
+command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
+folder is located. Then you can remove the symlink named `jupyterlab_empinken_extension` within that folder.
+
+### Packaging the extension
+
+See [RELEASE](RELEASE.md)

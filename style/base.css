@@ -10,7 +10,7 @@
     --iou-solution-bg-color: lightgreen;
     --iou-learner-bg-color: lightyellow;
     --iou-tutor-bg-color: lightpink;
-  }
+}
 
 .iou-activity-node {
     background-color: var(--iou-activity-bg-color) !important;

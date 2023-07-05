@@ -32,20 +32,20 @@ const plugin: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   activate: (app: JupyterFrontEnd, notebookTracker: INotebookTracker) => {
     const { commands } = app;
-    
+
     //labshell via https://discourse.jupyter.org/t/jupyterlab-4-iterating-over-all-cells-in-a-notebook/20033/2
     const labShell = app.shell as LabShell;
     labShell.currentChanged.connect(() => {
       const notebook = app.shell.currentWidget as NotebookPanel;
       if (notebook) {
         notebook.revealed.then(() => {
-          notebook.content.widgets?.forEach(cell=>{
+          notebook.content.widgets?.forEach(cell => {
             const tagList = cell.model.getMetadata('tags') ?? [];
             //console.log("cell metadata",tagList)
-            tagList.forEach((tag:string) => {
+            tagList.forEach((tag: string) => {
               if (empinken_tags.includes(tag)) {
                 //console.log("hit",tag)
-                cell.node?.classList.add('iou-'+tag+'-node');
+                cell.node?.classList.add('iou-' + tag + '-node');
               }
             })
           })
@@ -53,22 +53,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
           //let i=1;
           //for (const cell of cellList) {
           //  console.log("a cell of type", cell.type, i)
-            //const tagList = convertToList(cell.metadata.tags);
-            //empinken_tags.forEach((tag) => {
-            //  if (tagList?.includes(tag)) {
-            //    console.log("hit",tag)
-            //    //cell.node.classList.add('iou-activity-node');
-            //  }
-            //})
-            //i=i+1;
-            //console.log('METADATA: ', cell.metadata)
+          //const tagList = convertToList(cell.metadata.tags);
+          //empinken_tags.forEach((tag) => {
+          //  if (tagList?.includes(tag)) {
+          //    console.log("hit",tag)
+          //    //cell.node.classList.add('iou-activity-node');
+          //  }
+          //})
+          //i=i+1;
+          //console.log('METADATA: ', cell.metadata)
           //}
         })
       }
     });
     // if we can get a list of cells, then update on render?
     // https://jupyterlab.readthedocs.io/en/stable/api/classes/cells.Cell-1.html#ready
-    
+
     // notebookTracker.currentChanged.connect((tracker, panel) => {
     //   //console.log(panel);
     //   if (!panel) {
@@ -108,7 +108,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     // });
     // TO DO  - if the notebook tracker points to current cell
     // then we should be able to get the current cell.
-     
+
 
 
     const createEmpinkenCommand = (label: string, type: string) => {
@@ -122,7 +122,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
           //console.log(label, type, caption)
           //console.log(activeCell)
           const nodeclass = 'iou-' + type + "-node";
-          if ( activeCell !== null) {
+          if (activeCell !== null) {
             let tagList = activeCell.model.getMetadata("tags") as string[] ?? [];
             //console.log("cell metadata was", tagList, "; checking for", type);
             if (tagList.includes(type)) {
@@ -138,8 +138,8 @@ const plugin: JupyterFrontEndPlugin<void> = {
             } else {
               // remove other tags
               tagList = removeListMembers(empinken_tags, tagList)
-              empinken_tags.forEach((tag:string) => {
-                activeCell.node.classList.remove('iou-' + tag + "-node")
+              empinken_tags.forEach((tag: string) => {
+                activeCell?.node.classList.remove('iou-' + tag + "-node")
               })
               // add required tag
               tagList.push(type)
@@ -151,11 +151,11 @@ const plugin: JupyterFrontEndPlugin<void> = {
         }
       };
     };
-    
-    empinken_tags.forEach((tag:string) => {
-      commands.addCommand('ouseful-empinken:'+tag,
+
+    empinken_tags.forEach((tag: string) => {
+      commands.addCommand('ouseful-empinken:' + tag,
         createEmpinkenCommand(tag.charAt(0).toUpperCase(),
-        tag));
+          tag));
     })
     // const command_a = 'ouseful-empinken:activity';
     // const command_l = 'ouseful-empinken:learner';

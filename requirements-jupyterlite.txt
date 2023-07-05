@@ -1,6 +1,0 @@
-ipywidgets>=7.7,<8
-jupyterlab~=3.3.0
-jupyterlite==0.1.0b4
-
-jupyterlab-empinken-extension
-
