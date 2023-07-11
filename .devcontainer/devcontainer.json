@@ -1,0 +1,34 @@
+{
+    //"image": "mcr.microsoft.com/devcontainers/universal:2",
+    "image": "outm351dev/tm351-23jl4", //"mmh352/tm351:23j.0b8", //"ouvocl/vce-tm351-jh:22j-b8",
+    "hostRequirements": {
+        //"cpus": 4
+    },
+    // Useful docs:
+    // https://containers.dev/implementors/json_reference/#general-properties
+    // https://containers.dev/implementors/json_reference/#_lifecycle-scripts
+    "waitFor": "postStartCommand",
+    //"waitFor": "onCreateCommand",
+    // For development, it may be useful to be root when connecting via terminal
+    "remoteUser": "root",
+    "containerUser": "root",
+    "updateContentCommand": "", //"python3 -m pip install -r requirements.txt",
+    "forwardPorts": [8888],
+    "postCreateCommand": "apt-get update && apt-get install -y python3.10-venv && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs && apt-get clean && pip install build jupyter-packaging",
+    "postStartCommand": "sudo service postgresql restart && sudo service mongod restart",
+    // && sudo su -c \"jupyter lab & \" ou
+    // But how do we make sure the extension is bundled into the jupyterlab env?
+    "customizations": {
+        "codespaces": {
+            "openFiles": []
+        },
+        "vscode": {
+            "settings": {
+                // On Mac Arm64, there's a long delay on the container build
+                // https://github.com/microsoft/vscode/issues/179827
+                "extensions.verifySignature": false
+            },
+            "extensions": []
+        }
+    }
+}
