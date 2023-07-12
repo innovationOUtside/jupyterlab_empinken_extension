@@ -1,26 +1,6 @@
 {
   "jupyter.lab.toolbars": {
     "Notebook": [
-      {
-        "name": "empinken-activity",
-        "command": "ouseful-empinken:activity",
-        "label": "A"
-      },
-      {
-        "name": "empinken-learner",
-        "command": "ouseful-empinken:learner",
-        "label": "L"
-      },
-      {
-        "name": "empinken-solution",
-        "command": "ouseful-empinken:solution",
-        "label": "S"
-      },
-      {
-        "name": "empinken-tutor",
-        "command": "ouseful-empinken:tutor",
-        "label": "T"
-      }
     ]
   },
   "title": "jupyterlab_empinken_extension",
