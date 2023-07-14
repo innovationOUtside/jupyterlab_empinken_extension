@@ -29,6 +29,8 @@ function removeListMembers(list1: any[], list2: any[]): any[] {
 
 const empinken_tags_: string[] = ["activity", "learner", "solution", "tutor"];
 let empinken_tags = empinken_tags_
+let empinken_tags2 = empinken_tags_
+var tag2abstractTag = new Map<string, string>();
 
 export class ButtonExtension implements DocumentRegistry.IWidgetExtension<NotebookPanel, INotebookModel> {
   settings: ISettingRegistry.ISettings;
@@ -57,26 +59,33 @@ export class ButtonExtension implements DocumentRegistry.IWidgetExtension<Notebo
   createNew(panel: NotebookPanel, context: DocumentRegistry.IContext<INotebookModel>): IDisposable {
     // Create the toolbar buttons
     const tagButtonSpec: {
-      [key: string]: { typ: string, label: string,
-       button: ToolbarButton,
-       enabled: boolean
-      } } = {};
+      [key: string]: {
+        typ: string, label: string,
+        button: ToolbarButton,
+        enabled: boolean,
+        newtag: string,
+      }
+    } = {};
 
     let tag_prefix = ''
     if (this.settings.get('use_tagprefix').composite as boolean) {
       tag_prefix = this.settings.get('tagprefix') ? this.settings.get('tagprefix').composite.toString() : '';
     } else tag_prefix = ''
 
-    const tmp_demo = ( typ: string ) => {
+    const click_button = (typ: string) => {
       console.log('button pressed', typ)
+      console.log("empinken_tags", empinken_tags)
+      console.log("empinken_tags2", empinken_tags2)
+      
       let activeCell = panel.content.activeCell;
       //console.log(label, type, caption)
       //console.log(activeCell)
       const nodeclass = 'iou-' + typ + "-node";
+      const newtag = this.settings.get(typ + "_tag").composite as string;
       if (activeCell !== null) {
         let tagList = activeCell.model.getMetadata("tags") as string[] ?? [];
         //console.log("cell metadata was", tagList, "; checking for", type);
-        let tagtype = tag_prefix + typ
+        let tagtype = tag_prefix + newtag;
         if (tagList.includes(tagtype)) {
           // ...then remove it
           const index = tagList.indexOf(tagtype, 0);
@@ -89,7 +98,7 @@ export class ButtonExtension implements DocumentRegistry.IWidgetExtension<Notebo
           // cell.node.classList exists
         } else {
           // remove other tags
-          tagList = removeListMembers(empinken_tags, tagList)
+          tagList = removeListMembers(empinken_tags2, tagList)
           empinken_tags_.forEach((tag: string) => {
             activeCell.node.classList.remove('iou-' + tag + "-node")
           })
@@ -108,15 +117,17 @@ export class ButtonExtension implements DocumentRegistry.IWidgetExtension<Notebo
     //panel.content.activeCell
     empinken_tags_.forEach((tag) => {
       const tlabel = tag.charAt(0).toUpperCase()
+      const newtag = this.settings.get(tag + '_tag').composite as string;
       tagButtonSpec[tag] = {
         'typ': tag,
         'label': tlabel,
+        'newtag': newtag,
         'button': new ToolbarButton({
           className: 'tagger-' + tag + '-button',
           label: tlabel,
           // TO DO : currently missing data-command="ouseful-empinken:TAG" attribute
           // in JL HTML on button
-          onClick: () => tmp_demo(tag),//createEmpinkenCommand(tlabel, tag), //'ouseful-empinken:' + tag,
+          onClick: () => click_button(tag),//createEmpinkenCommand(tlabel, tag), //'ouseful-empinken:' + tag,
           tooltip: 'Toggle ' + tag + ' metadata tag on a cell',
         }),
         'enabled': this.settings.get(tag + '_button').composite as boolean
@@ -126,7 +137,7 @@ export class ButtonExtension implements DocumentRegistry.IWidgetExtension<Notebo
         panel.toolbar.insertItem(location, 'toggle_' + tag + 'TagButtonAction', tagButtonSpec[tag]['button']);
         location++;
       }
-        
+
     });
 
     return new DisposableDelegate(() => {
@@ -165,15 +176,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
         //loadSetting(setting);
 
         const root = document.documentElement;
+        // TO DO  - update settings needs to be outside the promise?
+        // Somehow we need to have ensured we have ipdated settings before
+        // we iterate the notebook
         const updateSettings = (): void => {
           if (setting.get('use_tagprefix').composite as boolean) {
             tag_prefix = setting.get('tagprefix') ? setting.get('tagprefix').composite.toString() : '';
           } else tag_prefix = ''
 
           empinken_tags = [];
+          empinken_tags2 = []; //as per settings
           for (const tag of empinken_tags_) {
-            const prefixed_tag = tag_prefix + tag;
+            const prefixed_tag = tag_prefix +tag;
+            const prefixed_tag2 = tag_prefix + setting.get(tag + "_tag").composite as string;
             empinken_tags.push(prefixed_tag);
+            empinken_tags2.push(prefixed_tag2);
+            tag2abstractTag.set(prefixed_tag2, tag);
           }
           // Update the document CSS colour settings
           for (let typ of empinken_tags_) {
@@ -207,15 +225,19 @@ const plugin: JupyterFrontEndPlugin<void> = {
       const notebook = app.shell.currentWidget as NotebookPanel;
       if (notebook) {
         notebook.revealed.then(() => {
+          console.log("nb empinken_tags", empinken_tags )
+          console.log("nb empinken_tags2", empinken_tags2)
           notebook.content.widgets?.forEach(cell => {
-            const tagList = cell.model.getMetadata('tags') ?? [];
+            const tagList = cell.model?.getMetadata('tags') ?? [];
             console.log("cell metadata", tagList)
             tagList.forEach((tag: string) => {
-              if (empinken_tags.includes(tag)) {
-                //console.log("hit", tag)
-                const tag_ = tag.replace(new RegExp(tag_prefix, 'g'), '')
+              if (empinken_tags2.includes(tag)) {
+                let abstract_tag = tag2abstractTag.has(tag) ? tag2abstractTag.get(tag) : tag;
+                // Decode the tag_
+                const tag_ = abstract_tag.replace(new RegExp(tag_prefix, 'g'), '')
+                console.log("hit", tag, "abstract", abstract_tag, "add class", 'iou-' + tag_ + '-node' )
                 cell.node?.classList.add('iou-' + tag_ + '-node');
-              }
+              } else console.log("miss", tag)
             })
           })
         })
