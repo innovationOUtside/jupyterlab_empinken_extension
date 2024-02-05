@@ -1,6 +1,8 @@
 # jupyterlab-empinken-extension
 Coloured JupyterLab / RetroLab notebook cells based on cell tags
 
+**THIS EXTENSION NOW IS WHAT IT IS. THE JUPYTER DEV / BUILD PROCESS IS UNFATHOMABLE TO ME. AND BREAKING CHANGES IN A BUILD PROCESS I CAN'T FATHOM AS WELL AS THE JUPYTER ENVIRONMENT MEANS I JUST CAN'T KEEP WASTING FRUITLESS AND FUTILE HOURS TRYING TO MAKE EVEN A SIMPLE CSS CHANGE. USE THE VARIOUS VERSIONS ON PYPI. THIS MAIN BRANCH (DEPRECATED ANY) AND OTHER BRANCHES THAT ONCE WORKED HAVE ALL ROTTED IN THE BUILD PROCESS AS WELL AS THE CODE.**
+
 Jupyterlite demo: https://innovationoutside.github.io/jupyterlab_empinken_extension/
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/innovationOUtside/jupyterlab_empinken_extension/HEAD?labpath=content%2Fdemo.ipynb)
