@@ -111,14 +111,6 @@
   "jupyter.lab.toolbars": {
     "Notebook": [
       {
-        "name": "emp_set",
-        "command": "ouseful_empinken:testmeta"
-      },
-      {
-        "name": "emp_toggle",
-        "command": "ouseful_empinken:empkn_toggle"
-      },
-      {
         "name": "a",
         "command": "ouseful_empinken:empkn_a"
       },
