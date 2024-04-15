@@ -6,7 +6,7 @@ import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses';
 import { md_insert, md_remove, md_has } from 'jupyterlab-celltagsclasses';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
-const tags = ['a', 's', 'l', 't'];
+export const tags: string[] = ['activity', 'solution', 'learner', 'tutor'];
 
 function getFullTag(prefix: string, tag: string): string {
   return `${prefix}${tag}`;
@@ -64,7 +64,10 @@ export const create_empinken_commands = (
   };
 
   tags.forEach(tag => {
-    add_command(`empkn_${tag}`, tag, Scope.Active, [], (cell: Cell) =>
+    // Use a simple label text label for the button
+    // Really this should be a vector image?
+    const label =  tag[0].toUpperCase();
+    add_command(`empkn_${tag}`, label, Scope.Active, [], (cell: Cell) =>
       toggleTag(cell, tag, prefix)
     );
   });

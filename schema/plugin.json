@@ -112,19 +112,19 @@
     "Notebook": [
       {
         "name": "a",
-        "command": "ouseful_empinken:empkn_a"
+        "command": "ouseful_empinken:empkn_activity"
       },
       {
         "name": "s",
-        "command": "ouseful_empinken:empkn_s"
+        "command": "ouseful_empinken:empkn_solution"
       },
       {
         "name": "l",
-        "command": "ouseful_empinken:empkn_l"
+        "command": "ouseful_empinken:empkn_learner"
       },
       {
         "name": "t",
-        "command": "ouseful_empinken:empkn_t"
+        "command": "ouseful_empinken:empkn_tutor"
       }
     ]
   }
