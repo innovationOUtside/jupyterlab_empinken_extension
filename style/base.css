@@ -11,7 +11,6 @@
   --iou-tutor-bg-color: lightpink;
 }
 
-
 .cell-tag-style-activity,
 .iou-activity-node {
   background-color: var(--iou-activity-bg-color) !important;

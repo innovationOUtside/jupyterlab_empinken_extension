@@ -6,7 +6,7 @@ import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses';
 import { md_insert, md_remove, md_has } from 'jupyterlab-celltagsclasses';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
-export const tags: string[] = ['activity', 'solution', 'learner', 'tutor'];
+export const typs: string[] = ['activity', 'solution', 'learner', 'tutor'];
 
 function getFullTag(prefix: string, tag: string): string {
   return `${prefix}${tag}`;
@@ -14,17 +14,17 @@ function getFullTag(prefix: string, tag: string): string {
 
 const toggleTag = (cell: Cell, tag: string, prefix: string) => {
   const fullTag = getFullTag(prefix, tag);
-  const hasTag = md_has(cell, 'tags', fullTag);
+  // Metadata path to the tags
+  const tags_path = 'tags';
+  const hasTag = md_has(cell, tags_path, fullTag);
   if (hasTag) {
     // Remove the desired tag (a, s, l, t)
-    md_remove(cell, 'tags', fullTag);
+    md_remove(cell, tags_path, fullTag);
   } else {
     // Remove all other related tags (a, s, l, t) if present
-    tags.forEach(relatedTag =>
-      md_remove(cell, 'tags', getFullTag(prefix, relatedTag))
-    );
+    typs.forEach(typ => md_remove(cell, tags_path, getFullTag(prefix, typ)));
     // Set the tag
-    md_insert(cell, 'tags', fullTag);
+    md_insert(cell, tags_path, fullTag);
   }
   console.log(`Toggled cell tag ${fullTag}`, cell.node);
 };
@@ -40,35 +40,53 @@ export const create_empinken_commands = (
       ? (settings.get('tagprefix').composite as string)
       : '';
 
+  // Add commands and command buttons.
+  // These can be controlled from the extension settings.
+  // Currently, JupyterLab needs to be reloaded in a browser tab / window
+  // for the button display regime to be updated.
   const add_command = (
     suffix: string,
+    tag: string,
     label: string,
     scope: Scope,
     keys: string[],
+    settings: ISettingRegistry.ISettings | null,
     the_function: (cell: Cell) => void
   ) => {
-    const command = `ouseful_empinken:${suffix}`;
-    app.commands.addCommand(command, {
-      label,
-      execute: () => {
-        console.log(label);
-        apply_on_cells(notebookTracker, scope, the_function);
-      }
-    });
-    palette.addItem({ command, category: 'celltagsclasses' });
-    app.commands.addKeyBinding({
-      command,
-      keys,
-      selector: '.jp-Notebook'
-    });
+    let display_button = true;
+    if (settings != null) {
+      display_button = settings.get(`${tag}_button`).composite as boolean;
+    }
+    if (display_button) {
+      const command = `ouseful_empinken:${suffix}`;
+      app.commands.addCommand(command, {
+        label,
+        execute: () => {
+          console.log(label);
+          apply_on_cells(notebookTracker, scope, the_function);
+        }
+      });
+      palette.addItem({ command, category: 'celltagsclasses' });
+      app.commands.addKeyBinding({
+        command,
+        keys,
+        selector: '.jp-Notebook'
+      });
+    }
   };
 
-  tags.forEach(tag => {
+  typs.forEach(typ => {
     // Use a simple label text label for the button
     // Really this should be a vector image?
-    const label =  tag[0].toUpperCase();
-    add_command(`empkn_${tag}`, label, Scope.Active, [], (cell: Cell) =>
-      toggleTag(cell, tag, prefix)
+    const label = typ[0].toUpperCase();
+    add_command(
+      `empkn_${typ}`,
+      typ,
+      label,
+      Scope.Active,
+      [],
+      settings,
+      (cell: Cell) => toggleTag(cell, typ, prefix)
     );
   });
 };

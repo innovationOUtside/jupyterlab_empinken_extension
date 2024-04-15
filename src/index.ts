@@ -7,7 +7,7 @@ import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { INotebookTracker } from '@jupyterlab/notebook';
 import { ICommandPalette } from '@jupyterlab/apputils';
 
-import { create_empinken_commands, tags } from './empinken_commands';
+import { create_empinken_commands, typs } from './empinken_commands';
 
 /**
  * Initialization data for the jupyterlab_empinken_extension extension.
@@ -44,16 +44,16 @@ const plugin: JupyterFrontEndPlugin<void> = {
           // The document object seems to be magically available?
           const root = document.documentElement;
           const updateSettings = (): void => {
-            if (settings!=null) {
-            // The CSS tag type are used in the pre-defined CSS variables (see: base.css) 
-            for (let typ of tags) {
-              let color = settings.get(`${typ}_color`).composite as string;
-              const render = settings.get(`${typ}_render`).composite as boolean;
-              if (!render)
-                 color = "transparent";
-              root.style.setProperty(`--iou-${typ}-bg-color`, color);
+            if (settings != null) {
+              // The CSS tag type are used in the pre-defined CSS variables (see: base.css)
+              for (let typ of typs) {
+                let color = settings.get(`${typ}_color`).composite as string;
+                const render = settings.get(`${typ}_render`)
+                  .composite as boolean;
+                if (!render) color = 'transparent';
+                root.style.setProperty(`--iou-${typ}-bg-color`, color);
+              }
             }
-          }
           };
           updateSettings();
           // We can auto update the color
