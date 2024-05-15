@@ -6,6 +6,10 @@ A JupyterLab extension for colouring notebook cell backgrounds.
 
 Builds on [`jupyterlab-celltagsclasses`](https://github.com/parmentelat/jupyterlab-celltagsclasses) and earlier versions of `jupyterlab_empinken_extension`.
 
+![empinken backgrounds](images/empinken-backgrounds.png)
+
+![empinken settings](images/empinken-settings.png)
+
 ## Requirements
 
 - JupyterLab >= 4.0.0
