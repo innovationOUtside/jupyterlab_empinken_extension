@@ -1,5 +1,4 @@
 *.bundle.*
-ui-tests/
 lib/
 node_modules/
 *.log

@@ -7,10 +7,13 @@ import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { INotebookTracker } from '@jupyterlab/notebook';
 import { ICommandPalette } from '@jupyterlab/apputils';
 
-import { create_empinken_commands, typs } from './empinken_commands';
+import {
+  update_empinken_settings,
+  create_empinken_commands
+} from './empinken_commands';
 
 /**
- * Initialization data for the jupyterlab_empinken_extension extension.
+ * Initialisation data for the jupyterlab_empinken_extension extension.
  */
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab_empinken_extension:plugin',
@@ -29,46 +32,55 @@ const plugin: JupyterFrontEndPlugin<void> = {
       'JupyterLab extension jupyterlab_empinken_extension is activated!'
     );
 
-    let settings: ISettingRegistry.ISettings | null = null;
+    // User-settings for the extension are defined in ../schema/plugin.json .properties
     if (settingRegistry) {
       settingRegistry
         .load(plugin.id)
         .then(loaded_settings => {
-          settings = loaded_settings;
           console.log(
             'jupyterlab_empinken_extension settings loaded:',
-            settings.composite
+            loaded_settings.composite
           );
 
           // Handle the background colours
-          // The document object seems to be magically available?
+          // The document object is always available.
           const root = document.documentElement;
           const updateSettings = (): void => {
-            if (settings != null) {
-              // The CSS tag type are used in the pre-defined CSS variables (see: base.css)
-              for (let typ of typs) {
-                let color = settings.get(`${typ}_color`).composite as string;
-                const render = settings.get(`${typ}_render`)
-                  .composite as boolean;
-                if (!render) color = 'transparent';
-                root.style.setProperty(`--iou-${typ}-bg-color`, color);
-              }
-            }
+            console.log('jupyterlab_empinken_extension settings updated');
+            update_empinken_settings(loaded_settings, root);
           };
           updateSettings();
-          // We can auto update the color
-          settings.changed.connect(updateSettings);
-
-          create_empinken_commands(app, notebookTracker, palette, settings);
+          // Update settings if the settings are changed
+          // In the case of empinken, the following will happen
+          // immediately the settings are saved (click in the settings canvas to trigger the update):
+          // - [Y] update the CSS variables with new colour settings.
+          // - [Y] enable/disable display of background colour for each empinken type.
+          // - [N] enable/disable button display (requires refresh of browser window).
+          loaded_settings.changed.connect(updateSettings);
+          // Create empinken commands and add appropriate notebook buttons.
+          create_empinken_commands(
+            app,
+            notebookTracker,
+            palette,
+            loaded_settings
+          );
         })
         .catch(reason => {
           console.error(
             'Failed to load settings for jupyterlab_empinken_extension.',
             reason
           );
+          // Create empinken commands.
+          // The lack of settings means buttons will not be displayed.
+          // No CSS variables will have been set via the extension,
+          // but they may have been defined via a custom CSS file.
+          create_empinken_commands(app, notebookTracker, palette, null);
         });
     } else {
-      // If settingRegistry is null, call create_empinken_commands with null settings
+      // Create empinken commands.
+      // The lack of settings means buttons will not be displayed.
+      // No CSS variables will have been set via the extension,
+      // but they may have been defined via a custom CSS file
       create_empinken_commands(app, notebookTracker, palette, null);
     }
   }
