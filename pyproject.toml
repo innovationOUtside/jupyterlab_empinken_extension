@@ -5,6 +5,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "jupyterlab_empinken_extension"
+authors = [
+    {name = "Tony Hirst", email = "tony.hirst@gmail.com"},
+]
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
@@ -26,7 +29,10 @@ classifiers = [
 dependencies = [
     "jupyterlab-celltagsclasses==0.5.1"
 ]
-dynamic = ["version", "description", "authors", "urls", "keywords"]
+dynamic = ["version", "description",  "keywords"]
+
+[project.urls]
+repository = "https://github.com/innovationOUtside/jupyterlab_empinken_extension"
 
 [tool.hatch.version]
 source = "nodejs"
@@ -77,3 +83,4 @@ before-build-python = ["jlpm clean:all"]
 
 [tool.check-wheel-contents]
 ignore = ["W002"]
+

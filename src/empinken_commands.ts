@@ -194,7 +194,7 @@ export const create_empinken_commands = (
     // Use a simple label text label for the button
     // Really this should be a vector image?
     const label = typ[0].toUpperCase();
-    console.log(`typ ${typ} has tag ${typ} ok? `);
+    // console.log(`typ ${typ} has tag ${typ} ok? `);
     // Add the command and also register and display buttons if required
     add_command(
       `empkn_${typ}`, // The command name suffix
