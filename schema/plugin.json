@@ -98,13 +98,13 @@
       "type": "string",
       "title": "Learner tag name",
       "description": "Tag body (ex- of prefix) to identify learner",
-      "default": "student"
+      "default": "learner"
     },
     "tutor_tag": {
       "type": "string",
       "title": "Tutor tag name",
       "description": "Tag body (ex- of prefix) to identify tutor",
-      "default": "commentate"
+      "default": "tutor"
     }
   },
   "additionalProperties": false,
@@ -112,19 +112,23 @@
     "Notebook": [
       {
         "name": "a",
-        "command": "ouseful_empinken:empkn_activity"
+        "command": "ouseful_empinken:empkn_activity",
+        "icon": "jupyterlab_empinken_extension:activity_icon"
       },
       {
         "name": "s",
-        "command": "ouseful_empinken:empkn_solution"
+        "command": "ouseful_empinken:empkn_solution",
+        "icon": "jupyterlab_empinken_extension:solution_icon"
       },
       {
         "name": "l",
-        "command": "ouseful_empinken:empkn_learner"
+        "command": "ouseful_empinken:empkn_learner",
+        "icon": "jupyterlab_empinken_extension:learner_icon"
       },
       {
         "name": "t",
-        "command": "ouseful_empinken:empkn_tutor"
+        "command": "ouseful_empinken:empkn_tutor",
+        "icon": "jupyterlab_empinken_extension:tutor_icon"
       }
     ]
   }

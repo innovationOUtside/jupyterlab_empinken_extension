@@ -44,6 +44,9 @@ import { ICommandPalette } from '@jupyterlab/apputils';
 import { Cell } from '@jupyterlab/cells';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
+import { LabIcon } from '@jupyterlab/ui-components';
+import { activityIcon, solutionIcon, learnerIcon, tutorIcon } from './icons';
+
 // The jupyterlab-celltagsclasses extension provides a range of utility functions
 // for working with notebook cells, including:
 // - metadata handling on a cell's logical model
@@ -137,6 +140,14 @@ const captions: { [key: string]: string } = {
   T: 'Colour tutor / feedback  cell'
 };
 
+// Create the dictionary with explicit typing
+const iconDict: { [key: string]: LabIcon } = {
+  A: activityIcon,
+  S: solutionIcon,
+  L: learnerIcon,
+  T: tutorIcon
+};
+
 // When the extension is loaded, create a set of empinken commands,
 // and register notebook toolbar buttons as required.
 export const create_empinken_commands = (
@@ -173,6 +184,9 @@ export const create_empinken_commands = (
       display_button = settings.get(`${typ}_button`).composite as boolean;
     }
     // Register the button as required
+    // TO DO - should we separate the command and the button?
+    // Here, display_button determines whether the command is registered,
+    // as well as whether the button is displayed
     if (display_button) {
       // Register a command in a de facto `ouseful_empinken` command namespace
       const command = `ouseful_empinken:${suffix}`;
@@ -180,6 +194,7 @@ export const create_empinken_commands = (
       app.commands.addCommand(command, {
         label,
         caption: captions[label],
+        icon: iconDict[label],
         execute: () => {
           console.log(label);
           // ... to the desired cell(s)
@@ -189,11 +204,13 @@ export const create_empinken_commands = (
       // Register the toolbar buttons
       palette.addItem({ command, category: 'empinken_buttons' });
       // Register keyboard shortcut bindings
-      app.commands.addKeyBinding({
-        command,
-        keys,
-        selector: '.jp-Notebook'
-      });
+      if (keys) {
+        app.commands.addKeyBinding({
+          command,
+          keys,
+          selector: '.jp-Notebook'
+        });
+      }
     }
   };
 

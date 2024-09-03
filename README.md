@@ -8,12 +8,25 @@ Builds on [`jupyterlab-celltagsclasses`](https://github.com/parmentelat/jupyterl
 
 ![empinken settings](images/empinken-settings.png)
 
-The buttons set tags on selected cells and the cell is styled correspondingly:
+The buttons set tags on selected cells and the cell is styled correspondingly.
+
+In v0.6.x:
+
+![New empinken MDI icons - book-open-outline, check, school-outline, format-quote-close](images/empinken-new-icons.png)
+
+- [*book* / `book-open-outline` icon](https://pictogrammers.com/library/mdi/icon/book-open-outline/): "activity" [maps to `style-activity` cell tag], by default, a blue background; used to idnetify activity blockls (follows OU VLE theme);
+- [*tick* / `check` icon](https://pictogrammers.com/library/mdi/icon/check/): "solution" [maps to `style-solution` cell tag], by default, a green background; used to identify solution cells;
+- [*head/mortarboard* ("scholar") / `school-outline` icon](https://pictogrammers.com/library/mdi/icon/school-outline/): "learner" [maps to cell tag `style-learner`], by default, a yellow background; used as a nudge to students ("you should edit / add content to this cell");
+- [*quote* / `format-quote-close` icon](https://pictogrammers.com/library/mdi/icon/format-quote-close/): "tutor" [maps to cell tag `style-tutor`], by default, a pink background; used by tutors to highlight feedback cells; used by editors/critical readers to highlight feedback cells to authors.
+
+*Icons from [Material Design Icons](https://pictogrammers.com/library/mdi/)*
+
+In `0.5.5`:
 
 - `A`: "activity" [maps to `style-activity` cell tag], by default, a blue background; used to idnetify activity blockls (follows OU VLE theme);
 - `S`: "solution" [maps to `style-solution` cell tag], by default, a green background; used to identify solution cells;
-- `L`: "learner" [maps to cell tag `style-student` (legacy) default; `style-learner` also okay], by default, a yellow background; used as a nudge to students ("you should edit / add content to this cell");
-- `T`: "tutor" [maps to cell tag `style-commentate` (legacy default); `style-tutor` also okay], by default, a pink background; used by tutors to highlight feedback cells; used by editors/critical readers to highlight feedback cells to authors.
+- `L`: "learner" [maps to cell tag `style-learner`], by default, a yellow background; used as a nudge to students ("you should edit / add content to this cell");
+- `T`: "tutor" [maps to cell tag `style-tutor`], by default, a pink background; used by tutors to highlight feedback cells; used by editors/critical readers to highlight feedback cells to authors.
 
 Associated tools: in [`tm351_nb_utils`](https://github.com/innovationOUtside/nb_workflow_tools) command lines tools:
 
@@ -52,6 +65,12 @@ To remove the extension, execute:
 ```bash
 pip uninstall jupyterlab_empinken_extension
 ```
+
+## TH BUILD
+
+`jlpm build`
+
+`hatch build`
 
 ## Contributing
 
