@@ -1,7 +1,5 @@
 # jupyterlab_empinken_extension
 
-[![Github Actions Status](https://github.com/innovationOUtside/jupyterlab_empinken_extension/workflows/Build/badge.svg)](https://github.com/innovationOUtside/jupyterlab_empinken_extension/actions/workflows/build.yml)
-
 A JupyterLab extension for colouring notebook cell backgrounds.
 
 Builds on [`jupyterlab-celltagsclasses`](https://github.com/parmentelat/jupyterlab-celltagsclasses) and earlier versions of `jupyterlab_empinken_extension`.
