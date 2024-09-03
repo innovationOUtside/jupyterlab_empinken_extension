@@ -56,6 +56,7 @@ import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses';
 
 // Define a collection of empinken cell types.
 export const typs: string[] = ['activity', 'solution', 'learner', 'tutor'];
+export const old_and_new_typs: string[] = ['activity', 'solution', 'learner', 'tutor', "commentate", "student"];
 
 // Metadata tags used by the extension are generated as a combination of a
 // settings provided prefix and the empinken cell type.
@@ -80,7 +81,7 @@ const toggleTag = (
   // This is also going to be brittle when it comes to the CSS, because
   // the cell classes are derived directly from the cell tag using the
   // jupyterlab-celltagsclasses extension.
-  const tags = typs.map(
+  const tags = old_and_new_typs.map(
     t => (settings?.get(`${t}_tag`).composite as string) || t
   );
 

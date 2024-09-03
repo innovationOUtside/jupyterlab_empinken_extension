@@ -21,7 +21,9 @@ In v0.6.x:
 
 *Icons from [Material Design Icons](https://pictogrammers.com/library/mdi/)*
 
-In `0.5.5`:
+Any old style tags (`style-student` rather than `style-learner`, `style-commentate` rather than `style-tutor`) will be lazily updated as and when an empinken button is clicked on a cell tagged in the old style.
+
+In `0.5.6`:
 
 - `A`: "activity" [maps to `style-activity` cell tag], by default, a blue background; used to idnetify activity blockls (follows OU VLE theme);
 - `S`: "solution" [maps to `style-solution` cell tag], by default, a green background; used to identify solution cells;
@@ -30,8 +32,8 @@ In `0.5.5`:
 
 Associated tools: in [`tm351_nb_utils`](https://github.com/innovationOUtside/nb_workflow_tools) command lines tools:
 
-- [empinken tags updater](https://github.com/innovationOUtside/nb_workflow_tools/tree/master?tab=readme-ov-file#empinken-updater) (to `style-activity`/`style-solution`/`style-learner`/`style-tutor` format): `upgrade_empinken_tags NOTEBOOKS_PATH`
-- 
+- [empinken tags updater](https://github.com/innovationOUtside/nb_workflow_tools/tree/master?tab=readme-ov-file#empinken-updater) — updates tags in notebooks to new style (`style-activity`/`style-solution`/`style-learner`/`style-tutor` format): `upgrade_empinken_tags NOTEBOOKS_PATH`)
+
 ## Requirements
 
 - JupyterLab >= 4.0.0
