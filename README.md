@@ -1,13 +1,20 @@
 # jupyterlab-empinken-extension
 Coloured JupyterLab / RetroLab notebook cells based on cell tags
 
-**THIS EXTENSION NOW IS WHAT IT IS. THE JUPYTER DEV / BUILD PROCESS IS UNFATHOMABLE TO ME. AND BREAKING CHANGES IN A BUILD PROCESS I CAN'T FATHOM AS WELL AS THE JUPYTER ENVIRONMENT MEANS I JUST CAN'T KEEP WASTING FRUITLESS AND FUTILE HOURS TRYING TO MAKE EVEN A SIMPLE CSS CHANGE. USE THE VARIOUS VERSIONS ON PYPI. THIS MAIN BRANCH (DEPRECATED ANYWAY) AND OTHER BRANCHES THAT ONCE WORKED HAVE ALL ROTTED IN THE BUILD PROCESS AS WELL AS THE CODE.**
-
 Jupyterlite demo: https://innovationoutside.github.io/jupyterlab_empinken_extension/
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/innovationOUtside/jupyterlab_empinken_extension/HEAD?labpath=content%2Fdemo.ipynb)
 
 This extension optionally enables four notebook toolbar buttons that can toggle persistent tag state on notebook markdown and code cells.
+
+- `A`: "activity" [maps to `style-activity` cell tag], by default, a blue background; used to idnetify activity blockls (follows OU VLE theme);
+- `S`: "solution" [maps to `style-solution` cell tag], by default, a green background; used to identify solution cells;
+- `L`: "learner" [maps to cell tag `style-student` (legacy) default; `style-learner` also okay], by default, a yellow background; used as a nudge to students ("you should edit / add content to this cell");
+- `T`: "tutor" [maps to cell tag `style-commentate` (legacy default); `style-tutor` also okay], by default, a pink background; used by tutors to highlight feedback cells; used by editors/critical readers to highlight feedback cells to authors.
+
+Associated tools: in [`tm351_nb_utils`](https://github.com/innovationOUtside/nb_workflow_tools) command lines tools:
+
+- [empinken tags updater](https://github.com/innovationOUtside/nb_workflow_tools/tree/master?tab=readme-ov-file#empinken-updater) (to `style-activity`/`style-solution`/`style-learner`/`style-tutor` format): `upgrade_empinken_tags NOTEBOOKS_PATH`
 
 To install the prebuilt extension from a wheel:
 
