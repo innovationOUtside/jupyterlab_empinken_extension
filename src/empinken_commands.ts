@@ -130,6 +130,13 @@ export function update_empinken_settings(
   }
 }
 
+const captions: { [key: string]: string } = {
+  A: 'Colour activity cell',
+  S: 'Colour solution cell',
+  L: 'Colour learner / call to action cell',
+  T: 'Colour tutor / feedback  cell'
+};
+
 // When the extension is loaded, create a set of empinken commands,
 // and register notebook toolbar buttons as required.
 export const create_empinken_commands = (
@@ -172,6 +179,7 @@ export const create_empinken_commands = (
       // Add the command...
       app.commands.addCommand(command, {
         label,
+        caption: captions[label],
         execute: () => {
           console.log(label);
           // ... to the desired cell(s)
