@@ -112,23 +112,19 @@
     "Notebook": [
       {
         "name": "a",
-        "command": "ouseful_empinken:empkn_activity",
-        "icon": "jupyterlab_empinken_extension:activity_icon"
+        "command": "ouseful_empinken:empkn_activity"
       },
       {
         "name": "s",
-        "command": "ouseful_empinken:empkn_solution",
-        "icon": "jupyterlab_empinken_extension:solution_icon"
+        "command": "ouseful_empinken:empkn_solution"
       },
       {
         "name": "l",
-        "command": "ouseful_empinken:empkn_learner",
-        "icon": "jupyterlab_empinken_extension:learner_icon"
+        "command": "ouseful_empinken:empkn_learner"
       },
       {
         "name": "t",
-        "command": "ouseful_empinken:empkn_tutor",
-        "icon": "jupyterlab_empinken_extension:tutor_icon"
+        "command": "ouseful_empinken:empkn_tutor"
       }
     ]
   }
